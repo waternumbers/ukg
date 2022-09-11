@@ -16,7 +16,7 @@ var map = L.map('map',{
 }) ;
 
 const isOk = response => response.ok ? response.json() : Promise.reject(new Error('Failed to load data from server'))
-const url = "http://127.0.0.1:5678/series/"+mid;
+const url = "https://flood.waternumbers.com/series/"+mid;
 
 fetch(url)
     .then(isOk) // <= Use `isOk` function here

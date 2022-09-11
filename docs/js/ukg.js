@@ -117,7 +117,7 @@ var mrk = {
     },
     initialise: function(){
 	const isOk = response => response.ok ? response.json() : Promise.reject(new Error('Failed to load data from server'))
-	fetch("http://127.0.0.1:5678/series") //test_data/stations.json')
+	fetch("https://flood.waternumbers.com/series") //test_data/stations.json')
 	    .then(isOk) // <= Use `isOk` function here
 	    .then(function (data) {
 		mrk.stage.addData(data)

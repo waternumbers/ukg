@@ -44,7 +44,6 @@ vignettes/*.pdf
 **.dll
 .Rhistory
 inst/doc
-docs/*
 **.rds
 **.rds.old
 **.sqlite
