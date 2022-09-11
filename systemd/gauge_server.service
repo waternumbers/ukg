@@ -1,0 +1,11 @@
+[Unit]
+Description=Plumber Gauge data server
+
+[Service]
+ExecStart=/usr/bin/Rscript /home/wn/ukg/data_server/gauge_server.R
+Restart=on-abnormal
+WorkingDirectory=/home/wn/ukg/data_server/
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,9 @@
+[Unit]
+Description=ea_nrt timer
+
+[Timer]
+OnUnitActiveSec=900s
+OnBootSec=28s
+
+[Install]
+WantedBy=timers.target

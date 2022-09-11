@@ -1,0 +1,7 @@
+[Unit]
+Description=ea archive update
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/Rscript /home/wn/ukg/data_server/get_ea_archive.R
+WorkingDirectory=/home/wn/ukg/data_server/

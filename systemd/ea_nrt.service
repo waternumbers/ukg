@@ -1,0 +1,6 @@
+[Unit]
+Description=ea nrt update
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/Rscript /home/wn/ukg/data_server/get_ea_nrt.R

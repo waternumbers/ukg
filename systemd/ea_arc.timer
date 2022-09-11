@@ -1,0 +1,9 @@
+[Unit]
+Description=ea_arc timer
+
+[Timer]
+OnUnitActiveSec=14400s
+OnBootSec=23s
+
+[Install]
+WantedBy=timers.target
