@@ -59,4 +59,5 @@ docs/*
 **.qgz
 **.json
 private_detail.txt
+**.tar.gz
 
