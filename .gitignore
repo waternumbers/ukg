@@ -37,3 +37,24 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+**~
+**.o
+**.so
+**.dll
+.Rhistory
+inst/doc
+docs/*
+**.rds
+**.rds.old
+**.sqlite
+**.csv
+**.tif
+**.dbf
+**.shp
+**.prj
+**.shx
+**.cpg
+**.zip
+**.qgz
+**.json

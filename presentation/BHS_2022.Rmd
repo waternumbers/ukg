@@ -1,0 +1,38 @@
+---
+title: "Build your own National (English) Flood Forcasting System"
+author: Paul Smith
+date: March 22, 2005
+output: 
+  ioslides_presentation:
+    widescreen: true
+---
+
+# Why?
+
+## Challange:
+
+- Available Open Data
+- Scaling DBM modelling
+- Status Quo
+
+## DBM modelling
+
+- Equation
+- Past Systems
+- Forecast plot
+
+# In the evening
+
+## Dinner
+
+- Eat spaghetti
+- Drink wine
+
+----
+
+![picture of spaghetti](images/spaghetti.jpg)
+
+## Going to sleep
+
+- Get in bed
+- Count sheep
