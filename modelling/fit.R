@@ -2,7 +2,7 @@
 fitModel <- function(gauge_description, dataPath = "/data/EnvironmentAgency/by_station"){
 
     print( gauge_description$gauge )
-    if( dir.exists(file.path("models",gauge_description$gauge)) ){return(TRUE)}
+    if( dir.exists(file.path("build",gauge_description$gauge)) ){return(TRUE)}
     
     ## arrange data
     tmp <- fread(gauge_description$gauge,dataPath)
@@ -108,13 +108,13 @@ fitModel <- function(gauge_description, dataPath = "/data/EnvironmentAgency/by_s
                 est = list(y=y,P=P,perf=mdlPerf,mdl=mdl),
                 fcst = list(DX=DX,DY=DY) ,
                 copula = list(mrgX=mrgX,mrgE=mrgDE,mV=mV,Vr=V)) # ,Zscr=Zscr))
-    saveRDS(out,file.path("models",gauge_description$gauge,"output.rds"))
+    saveRDS(out,file.path("build",gauge_description$gauge,"output.rds"))
     
     mdl$gauge_descrption <- gauge_description
     mdl$copula <- out$copula; #mdl$copula$Zscr <- NULL
     mdl$param <- coef(mdl$fit)
     mdl$perf <- mdlPerf[which.min(mdlPerf$RMSE),]
     mdl$fit <- NULL
-    saveRDS(mdl,file.path("models",gauge_description$gauge,"model.rds"))
+    saveRDS(mdl,file.path("models",paste0(gauge_description$gauge,".rds"))
     return(TRUE)
 }

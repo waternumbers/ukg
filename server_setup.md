@@ -163,3 +163,9 @@ Check auto renewal
 ```
 sudo certbot renew --dry-run
 ```
+
+## set up R 
+
+- Install as from the CRAN wenpage
+
+- pkgconf libcurl4-openssl-dev libsodium-dev zlib1g-dev
