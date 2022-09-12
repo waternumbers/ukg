@@ -75,8 +75,7 @@ var mrk = {
 	},
 	onEachFeature: function(feature, layer) {   
 	    // add onclick event
-	    pstr = '<h4>' + '<a href=series.html?mid='+feature.properties.mid + ' target=_blank>' + feature.properties.town + '</a></h4>';
-	    pstr = '<h4>' + '<a href=./series?'+feature.properties.mid + ' target=_blank> Tide Gauge </a></h4>';
+	    pstr = '<h4>' + '<a href=./series?mid='+feature.properties.mid + ' target=_blank> Tide Gauge </a></h4>';
 	    pstr = pstr + '<p><b>Last Warning</b>: ' + feature.properties.lastWarning + '</p>';
 	    pstr = pstr + '<p><b>Last Forecast Warning</b>: ' + feature.properties.lastForecastWarning + '</p>';
 	    pstr = pstr + '<p><b>Series</b>: ' + feature.properties.mid + '</p>';
