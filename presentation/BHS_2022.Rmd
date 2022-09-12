@@ -1,7 +1,7 @@
 ---
-title: "Build your own National (English) Flood Forcasting System"
+title: "Build your own (English) NFFS"
 author: Paul Smith
-date: March 22, 2005
+date: 2022-09-12
 output: 
   ioslides_presentation:
     widescreen: true
@@ -9,30 +9,84 @@ output:
 
 # Why?
 
-## Challange:
+## Challange
+<div class="columns-2">
 
-- Available Open Data
-- Scaling DBM modelling
+- Is there available Open Data?
+  - No cost
+  - Commercial use
+  - API access
+  - High temporal resolution
+- Can we scale the DBM methodology
 - Status Quo
 
-## DBM modelling
+![](images/171124floodgalgate.jpg){width=100%}
+</div>
+# Data
 
-- Equation
-- Past Systems
-- Forecast plot
+## Observed Gauge Values
+  - NRT: OK (EA, NRW, SEPA)
+  - Archive: Mixed (EA historic)
+  - Only starting to get flow
 
-# In the evening
+## Catchment Data
+  - OS: DEM & Channel structure
+  - NFRA: Outlines under a different license
+  
+## Forecast Rainfall
+  - Global
+    - NRT & archive
+  - High resolution
+    - Met Office: API to limited, no public archive
+	- KNMI, DWD, Meteofrance: NRT, no archive
+  
+# DBM modelling
 
-## Dinner
+## A Model Unit
+<div class="columns-2">
+\[x_{t} = \sum_{j=1:n} \frac{b_{0,j} +  \ldots +
+  b_{m_{j},j}L^{m_{j}}}{1 - a_{0}L - \ldots - a_{n}L^{n}}
+  f_{j}\left(x_{t-d_{j}}\right)u_{t-d_{j}}
+\]
+\[y_{t} = x_{t} + \eta_{t}\]
 
-- Eat spaghetti
-- Drink wine
+- Improvements
+  - Feedback through non-linear function
+  - Non-linear Filtering
+  
+![](/images/Screenshot_Valid_2hr.png){width=100%}
+</div>
 
-----
+## A Forest of Trees
+<div class="columns-2">
 
-![picture of spaghetti](images/spaghetti.jpg)
+- Couple down the river network
+- Cascade forecasts
+- 615 level gauges
+- ~1000 rainfall gauges
 
-## Going to sleep
+![](images/dbm_tree.jpg){width=100%}
+</div>
 
-- Get in bed
-- Count sheep
+## Coverage & Performance
+
+<div class="columns-2">
+Catchments
+![Catchments](images/dbm_tree.jpg){width=100%}
+NSE of models
+![NSE of models](images/dbm_tree.jpg){width=100%}
+</div>
+
+# Dissemination
+
+## Web
+
+<div class="columns-2">
+![Catchments](images/dbm_tree.jpg){width=100%}
+
+- API: https://flood.waternumbers.com/
+- Veiwer: https://waternumbers.github.io/ukg
+- Code: https://github.com/waternumbers/ukg
+- paul@waternumbers.co.uk
+</div>
+
