@@ -47,21 +47,21 @@ const handlefetch =() =>{
 	document.getElementById("seriesInfo").innerHTML=pstr;
 
 	var plotData =[];
-	for (let i = 0; i < feature.properties.data.length; i++) {
+	    for (let i = 0; i < feature.properties.data.length; i++) {
 	    
             plotData.push([new Date(feature.properties.data[i].dateTime),
 			   [null,feature.properties.data[i].obs,null],
 			   [feature.properties.data[i].fcst_lower,
 			    feature.properties.data[i].fcst,
-			    feature.properties.data[i].fcst_higher],
+			    feature.properties.data[i].fcst_upper],
 			   [null,feature.properties.typicalHigh,null]
 			  ])
 			   // [feature.properties.data[i].fcst_lower,
 			   //  feature.properties.data[i].fcst,
 			   //  feature.properties.data[i].fcst_higher]])
 	}
-
-	//console.log(plotData)
+	    //console.log(feature.properties.data);
+	    //console.log(plotData)
 	g = new Dygraph(
             document.getElementById("div_g"),
             plotData, {
