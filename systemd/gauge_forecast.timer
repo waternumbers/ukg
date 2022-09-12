@@ -1,0 +1,9 @@
+[Unit]
+Description=gauge forecasting timer
+
+[Timer]
+OnUnitActiveSec=1800s
+OnBootSec=45s
+
+[Install]
+WantedBy=timers.target

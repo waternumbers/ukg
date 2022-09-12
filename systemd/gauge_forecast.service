@@ -1,0 +1,7 @@
+[Unit]
+Description=gauge forecasting update
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/Rscript /home/wn/ukg/modelling/run_fcst.R
+WorkingDirectory=/home/wn/ukg/modelling/
