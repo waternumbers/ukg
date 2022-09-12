@@ -61,7 +61,7 @@ digest_fcst_handler <- function(req){
     ##D <- read.csv(D)
     
     D <- jsonlite::fromJSON(req$body)
-    print(names(D))
+#    print(names(D))
     if(!all(c("mid","issueTime","data") %in% names(D))){ stop("JSON not in correct format") }
     if(!all(c("dateTime","fcst","fcst_upper","fcst_lower") %in% names(D$data))){
         stop("Data not in correct format") }
@@ -70,26 +70,26 @@ digest_fcst_handler <- function(req){
     
     stationTbl <- dbReadTable(mydb,"series") # 'SELECT * FROM series')
     
-    print(head(stationTbl))
+#    print(head(stationTbl))
 
     if(!(D$mid %in% stationTbl$mid)){ stop("Unknown mid") }
 
-    print("writting csv data")
+#    print("writting csv data")
     cn <- textConnection("csvData","w")
     write.csv(D$data[,c("dateTime","fcst","fcst_upper","fcst_lower")],cn,row.names=FALSE)
     close(cn)
-    print(head(csvData))
-    print("written csv data")
+#    print(head(csvData))
+#    print("written csv data")
     csvData <- paste(csvData,collapse="\n")
-    print("merged csv data")
+#    print("merged csv data")
     ## add data to database
     n <- dbExecute(mydb,'INSERT INTO fcst (mid,dateTime,value) VALUES( :mid, :dateTime, :value) ON CONFLICT(mid,dateTime) DO UPDATE SET value=excluded.value;',
                    param = list(mid=D$mid, dateTime = D$issueTime, value=csvData))
-    print("added csv data")
+#    print("added csv data")
     
     ## update latest forecat time
     ii <- which( stationTbl$mid == D$mid )
-    print(ii)
+#    print(ii)
     stationTbl$lastForecast[ii] <- max( stationTbl$lastForecast[ii], D$issueTime, na.rm=TRUE)
     m <- dbExecute(mydb,'UPDATE series SET lastForecast = :lastForecast WHERE mid = :mid;',param=list(mid=D$mid,lastForecast=stationTbl$lastForecast[ii]))
     ## delete old records
@@ -118,7 +118,7 @@ summary_handler <- function(){
 }
     
 series_handler <- function(mid){
-    print(mid)
+ #   print(mid)
    
     mydb <- DBI::dbConnect(RSQLite::SQLite(), dbFile)
     on.exit( dbDisconnect(mydb) )

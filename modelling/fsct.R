@@ -1,7 +1,7 @@
 ##rm(list=ls())
 fcstModel <- function(gauge, modelPath = "./models", apiPath = "http://127.0.0.1:5678", dryRun=FALSE){
 
-    modelFile <- file.path(modelPath,gauge,"model.rds")
+    modelFile <- file.path(modelPath,paste0(gauge,".rds"))
     if(!file.exists(modelFile) ){ stop("No model File") }
     mdl <- readRDS(modelFile)
     
