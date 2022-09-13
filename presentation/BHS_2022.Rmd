@@ -9,84 +9,144 @@ output:
 
 # Why?
 
-## Challange
+## Challenge
 <div class="columns-2">
-
 - Is there available Open Data?
-  - No cost
-  - Commercial use
+   - No cost
+   - Commercial use
   - API access
   - High temporal resolution
-- Can we scale the DBM methodology
+- Does the DBM methodology scale?
 - Status Quo
 
 ![](images/171124floodgalgate.jpg){width=100%}
 </div>
 # Data
 
-## Observed Gauge Values
-  - NRT: OK (EA, NRW, SEPA)
-  - Archive: Mixed (EA historic)
-  - Only starting to get flow
+## Observed Data
+<div class="columns-2">
+### Gauge Data
 
-## Catchment Data
-  - OS: DEM & Channel structure
-  - NFRA: Outlines under a different license
+|          | NRT                                                                                            | Archive                                                            |
+|---------:|:-----------------------------------------------------------------------------------------------|--------------------------------------------------------------------|
+|    Stage | <span class="green">EA</span>, <span class="green">NRW</span>, <span class="green">SEPA</span> | <span class="blue">EA</span>, NRW, <span class="green">SEPA</span> |
+|    Flow | <span class="blue">EA</span>, NRW, <span class="green">SEPA</span> | <span class="blue">EA</span>, NRW, <span class="green">SEPA</span> |
+|    Rainfall | <span class="green">EA</span>, <span class="green">NRW</span>, <span class="green">SEPA</span> | <span class="blue">EA</span>, NRW, <span class="green">SEPA</span>, <span class="green">UKMO</span> |
+
+### Catchment Data
+
+- Lots of sources
+- Ordnance Survey
+  - DEM
+  - Channel Network
+
+<br>
+</div>
+
   
 ## Forecast Rainfall
-  - Global
-    - NRT & archive
-  - High resolution
-    - Met Office: API to limited, no public archive
-	- KNMI, DWD, Meteofrance: NRT, no archive
-  
-# DBM modelling
+
+<div class="columns-2">
+<video width="75%" controls> 
+<source src="images/Media1.mp4" type="video/mp4">
+</video>
+
+|                                     | NRT    | Archive      |
+|------------------------------------:|--------|--------------|
+|    <span class="green">Radar</span> | Image  | (No)         |
+| <span class="green">UKMO UKV</span> | No (£) | No (License) |
+|      <span class="blue">KNMI</span> | Yes    | No           |
+|       <span class="blue">DWD</span> | Yes    | No           |
+|                                NCEP | Yes    | Yes          |
+|                               ECMWF | Yes    | Yes          |
+
+Resolution: <span class="green">UK</span>, <span class="blue">European</span>, Global
+
+</div>
+
+# Data Based Mechanistic Modelling
 
 ## A Model Unit
 <div class="columns-2">
-\[x_{t} = \sum_{j=1:n} \frac{b_{0,j} +  \ldots +
+\[x_{t} = x_{min} + \sum_{j=1:n} \frac{b_{0,j} +  \ldots +
   b_{m_{j},j}L^{m_{j}}}{1 - a_{0}L - \ldots - a_{n}L^{n}}
   f_{j}\left(x_{t-d_{j}}\right)u_{t-d_{j}}
 \]
 \[y_{t} = x_{t} + \eta_{t}\]
 
-- Improvements
-  - Feedback through non-linear function
-  - Non-linear Filtering
-  
-![](/images/Screenshot_Valid_2hr.png){width=100%}
+Improvements
+
+- Feedback through non-linear function
+- Non-linear Filtering
+
+<br>
+<br>
+<br>
+<br><br><br>
+![](images/Screenshot_Valid_2hr.png){width=100%}
+
 </div>
 
 ## A Forest of Trees
 <div class="columns-2">
+### Catchment Tree
 
-- Couple down the river network
-- Cascade forecasts
-- 615 level gauges
-- ~1000 rainfall gauges
+![](images/dbm_tree.jpg){width=95%}
 
-![](images/dbm_tree.jpg){width=100%}
+- Identify 615 key level gauge
+  - River network -> Trees
+  - Add new gauges as spurs
+- Map ~1000 Rain gauges by
+  - Defining catchments
+  - Theissen Polygon
 </div>
 
 ## Coverage & Performance
 
 <div class="columns-2">
 Catchments
-![Catchments](images/dbm_tree.jpg){width=100%}
+![NSE of models](images/ctch_crop.png){width=90%}
+
 NSE of models
-![NSE of models](images/dbm_tree.jpg){width=100%}
+![NSE of models](images/perf_hist.png){width=100%}
 </div>
 
-# Dissemination
+# Implementation
 
-## Web
-
+## An Open System
 <div class="columns-2">
-![Catchments](images/dbm_tree.jpg){width=100%}
+![](images/Picture1.png){width=100%}
 
-- API: https://flood.waternumbers.com/
-- Veiwer: https://waternumbers.github.io/ukg
-- Code: https://github.com/waternumbers/ukg
-- paul@waternumbers.co.uk
+**Alpha: Not stable**
+
+Web Services 
+
+- Providing APIs
+
+Scheduled jobs
+
+- Data scrapping
+- Model Simulation
+
+ 
+ 
+https://waternumbers.github.io/ukg
+
 </div>
 
+## The Future
+
+- Can you build your own NFFS? *Yes*
+- Can you run your own NFFS? *Yes but more compromises*
+
+- Document and stabalise
+- Include (Ensemble) meteorological forecasts
+  - Evaluate forecast performance
+- Expand over the UK
+- Incorporate sensors from other sources
+
+<div class="centered">
+https://waternumbers.github.io/ukg
+
+paul@waternumbers.co.uk
+</div>
