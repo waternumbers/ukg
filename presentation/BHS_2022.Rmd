@@ -16,7 +16,7 @@ output:
    - Commercial use
   - API access
   - High temporal resolution
-- Can we scale the DBM methodology
+- Does the DBM methodology scale?
 - Status Quo
 
 ![](images/171124floodgalgate.jpg){width=100%}
@@ -36,7 +36,7 @@ output:
 ### Catchment Data
 
 - Lots of sources
-- Ordance Survey
+- Ordnance Survey
   - DEM
   - Channel Network
 
@@ -105,23 +105,48 @@ Improvements
 
 <div class="columns-2">
 Catchments
-<video width="75%" controls> 
-<source src="images/Media1.mp4" type="video/mp4">
-</video>
+![NSE of models](images/ctch_crop.png){width=90%}
 
 NSE of models
-![NSE of models](images/dbm_tree.jpg){width=100%}
+![NSE of models](images/perf_hist.png){width=100%}
 </div>
 
-# Dissemination
+# Implementation
 
-## Web
+## An Open System
 <div class="columns-2">
 ![](images/Picture1.png){width=100%}
 
-- API: https://flood.waternumbers.com/
-- Veiwer: https://waternumbers.github.io/ukg
-- Code: https://github.com/waternumbers/ukg
-- paul@waternumbers.co.uk
+**Alpha: Not stable**
+
+Web Services 
+
+- Providing APIs
+
+Scheduled jobs
+
+- Data scrapping
+- Model Simulation
+
+ 
+ 
+https://waternumbers.github.io/ukg
+
 </div>
 
+## The Future
+
+- Can you build your own NFFS? *Yes*
+- Can you run your own NFFS? *Yes but more compromises*
+
+- Document and stabalise
+- Include (Ensemble) meteorological forecasts
+  - Evaluate forecast performance
+- Expand over the UK
+- Incorporate sensors from other sources
+
+<div class="centered">
+https://waternumbers.github.io/ukg
+
+paul@waternumbers.co.uk
+</div>
