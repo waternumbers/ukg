@@ -188,3 +188,9 @@ after `loacation /`
 
 ## systemd
 
+copy service and timer into the /etc/systemd/system
+
+sudo systemctl daemon-reload
+sudo systemctl start <>.timer
+sudo systemctl list-timers --all
+sudo systemctl enable <>.timer
