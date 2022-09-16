@@ -57,7 +57,7 @@ var mrk = {
 	},
 	onEachFeature: function(feature, layer) {   
 	    // add onclick event
-	    pstr = '<h4>' + '<a href=series.html?mid='+feature.properties.mid + ' target=_blank>' + feature.properties.town + '</a></h4>';
+	    pstr = '<h4>' + '<a href=../series/?mid='+feature.properties.mid + ' target=_blank>' + feature.properties.town + '</a></h4>';
 	    pstr = pstr + '<p><b>River</b>: ' + feature.properties.featureName + '</p>';
 	    pstr = pstr + '<p><b>Last Warning</b>: ' + feature.properties.lastWarning + '</p>';
 	    pstr = pstr + '<p><b>Last Forecast Warning</b>: ' + feature.properties.lastForecastWarning + '</p>';
@@ -75,7 +75,7 @@ var mrk = {
 	},
 	onEachFeature: function(feature, layer) {   
 	    // add onclick event
-	    pstr = '<h4>' + '<a href=./series?mid='+feature.properties.mid + ' target=_blank> Tide Gauge </a></h4>';
+	    pstr = '<h4>' + '<a href=../series/?mid='+feature.properties.mid + ' target=_blank> Tide Gauge </a></h4>';
 	    pstr = pstr + '<p><b>Last Warning</b>: ' + feature.properties.lastWarning + '</p>';
 	    pstr = pstr + '<p><b>Last Forecast Warning</b>: ' + feature.properties.lastForecastWarning + '</p>';
 	    pstr = pstr + '<p><b>Series</b>: ' + feature.properties.mid + '</p>';
@@ -98,7 +98,7 @@ var mrk = {
 	},
 	onEachFeature: function(feature, layer) {   
 	    // add onclick event
-	    pstr = '<h4>' + '<a href=series.html?mid='+feature.properties.mid + ' target=_blank> Rain Gauge </a></h4>';
+	    pstr = '<h4>' + '<a href=../series/?mid='+feature.properties.mid + ' target=_blank> Rain Gauge </a></h4>';
 	    pstr = pstr + '<p><b>Last Warning</b>: ' + feature.properties.lastWarning + '</p>';
 	    pstr = pstr + '<p><b>Last Forecast Warning</b>: ' + feature.properties.lastForecastWarning + '</p>';
 	    pstr = pstr + '<p><b>Series</b>: ' + feature.properties.mid + '</p>';
@@ -116,7 +116,7 @@ var mrk = {
     },
     initialise: function(){
 	const isOk = response => response.ok ? response.json() : Promise.reject(new Error('Failed to load data from server'))
-	fetch("https://flood.waternumbers.com/series") //test_data/stations.json')
+	fetch("https://flood.waternumbers.com/gauge/series") //test_data/stations.json')
 	    .then(isOk) // <= Use `isOk` function here
 	    .then(function (data) {
 		mrk.stage.addData(data)

@@ -180,12 +180,12 @@ root %>%
     plumber::pr_get(path = "/series",
                     handler = summary_handler,
                     serializer = plumber::serializer_unboxed_json(na = "null"),
-                    comments = "Returns a list of series"
+                    comments = "Returns a geojson feature collection of series and basic meta data"
                     ) %>%
     plumber::pr_get(path = "/series/<mid>",
                     handler = series_handler,
                     serializer = plumber::serializer_unboxed_json(na = "null"),
-                    comments = "Returns etails of a series"
+                    comments = "Returns a geojson feature for one series with meta data and observations"
                     ) %>%
     plumber::pr_post(path = "/obs",
                      handler = digest_obs_handler,
@@ -200,14 +200,19 @@ root %>%
     plumber::pr_get(path = "/latest",
                     handler = lastest_time_handler,
                      serializer = plumber::serializer_unboxed_json(na = "null"),
-                     comments = "latest times"
+                     comments = "Returns a json representation of series ID and latest observation times"
                      ) %>%
     plumber::pr_post(path = "/test",
                      ## parser = c("multi","csv"),
                      handler = test_csv_handler,
                      serializer = plumber::serializer_unboxed_json(),
-                     comments = "Post observed data to the server"
+                     comments = "Test route for checking posting of data to the server"
                      ) %>%
+    ## trim spec so post routes do not appear in public API
+    plumber::pr_set_api_spec(function(spec){
+        spec$paths <- spec$paths[ sapply(spec$paths,names) != "post"]
+      return(spec)
+    }) %>%
     pr_set_error(function(req, res, err){
         res$status <- 500
         list(error = err$message)

@@ -16,7 +16,7 @@ var map = L.map('map',{
 }) ;
 
 const isOk = response => response.ok ? response.json() : Promise.reject(new Error('Failed to load data from server'))
-const url = "https://flood.waternumbers.com/series/"+mid;
+const url = "https://flood.waternumbers.com/gauge/series/"+mid;
 
 //setInterval(()=>{
 const handlefetch =() =>{
