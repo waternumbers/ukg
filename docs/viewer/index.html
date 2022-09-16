@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Waternumbers Limited">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">    
+    <meta name="description" content="waternumbers data viewer">  
+    <title>FF|viewer</title>
+    <link rel="stylesheet" href="../classless.css">
+    <!-- local changes to css -->
+    <style type="text/css">
+      :root, html[data-theme='light'] {
+	--width: 90%;
+      }
+      .card button {width: 100%; margin: 0;}
+      body > footer { text-align: center; font-size: small; margin:0;}
+      a[href]{ text-decoration: none; }
+      
+      body {width:100vw; height: 100vh; }
+      #map {width:100%; height: calc(100vh - 6rem); }
+      .leaflet-popup-content {
+      width: 300px !important;
+      height: auto !important;
+      }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+	  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+	  crossorigin=""/>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <!-- Navigation -->
+      <nav>
+	<ul>
+	  <li><a href="../">Flood Forecast</a></li>
+	  <li class="float-right"><a href="/presentations">Presentations</a></li>
+	  <li class="float-right">Viewer</li>
+	  <!-- <li class="float-right"><a href="/">Home</a></li> -->
+	</ul>
+      </nav>    
+    </header>
+    <div class="row">
+      <!-- Menu of options to select -->
+      <div class="col-2">
+	<!-- background -->
+	<details>
+	  <summary>Background</summary>
+	  <input id="bgRadio1" name="bgRadio" type="radio"
+		 onChange="bg.change(this)" value="osmbw" checked="checked">
+          <label for="bgRadio1">OpenStreetMap (Black & White)</label><br>
+          <input id="bgRadio2" name="bgRadio" type="radio"
+		 onChange="bg.change(this)" value="osmtopo">
+          <label for="bgRadio2">OpenStreetMap (Topo)</label><br>
+          <input id="bgRadio3" name="bgRadio" type="radio"
+		 onChange="bg.change(this)" value="esri">
+          <label for="bgRadio3">Aerial Imagery (ESRI)</label>
+	</details>
+	<!-- layers -->
+	<!-- <details> -->
+	<!--   <summary>Layers</summary> -->
+	<!--   <input id="lyrRadio1" name="lyrRadio" type="radio" -->
+	<!-- 	 onChange="lyr.change()" value="imerg" checked="checked"> -->
+        <!--   <label for="lyrRadio1">IMERG NRT</label><br> -->
+        <!--   <\!-- <input id="lyrRadio2" name="lyrRadio" type="radio" -\-> -->
+	<!--   <\!-- 	 onChange="lyr.change()" value="bluesq"> -\-> -->
+        <!--   <\!-- <label for="lyrRadio2">Blue square</label> -\-> -->
+	<!--   <input id="lyrRadio2" name="lyrRadio" type="radio" -->
+	<!-- 	 onChange="lyr.change()" value="cal_imerg_hist"> -->
+	<!-- </details> -->
+	<!-- markers -->
+	<details>
+	  <summary>Stations</summary>
+	  <input id="mrkStage" name = "mrkInput" value="stage"
+		 type="checkbox" onChange="mrk.update(this)">
+	  <label for="mrkEA">River Level</label><br>
+	  <input id="mrkTBR" name = "mrkInput" value="tbr"
+		 type="checkbox" onChange="mrk.update(this)">
+	  <label for="mrkTBR">Rain Gauge</label><br>
+	  <input id="mrkTide" name = "mrkInput" value="tidal"
+		 type="checkbox" onChange="mrk.update(this)">
+	  <label for="mrkTide">Tide Gauge</label><br>
+	  <!-- <input id="mrkDHMwl" name = "mrkInput" value="waterLevel" type="checkbox" onChange="mrk.update(this)"> -->
+	  <!-- <label for="mrkDHMwl">DHM River Level</label><br> -->
+	</details>
+
+	<!-- Date slider -->
+	<!-- <label id="dateTimeRangeLabel" for="dateTimeRange">Date Time</label> -->
+        <!-- <input type="range" id="dateTimeRange" value="0" -->
+	<!--        min="0" max="239" oninput="lyr.update(this.valueAsNumber);"> -->
+	<!-- <\!-- Legend -\-> -->
+	<!-- <label id="legendLabel" for="legend">Legend</label> -->
+	<!-- <div id="legend"></div> -->
+      </div>
+      <div class="col">
+	<div id="map">
+	</div>
+      </div>
+    </div>
+    <hr>
+    <!-- Footer -->
+    <footer>
+      <p>Contains public sector information licensed under the Open Government Licence v3.0.</p>
+      <p>Copyright &copy; waternumbers 2022 |
+	<a href="https://waternumbers.co.uk/privacy.html">privacy</a> |
+	<a href="https://waternumbers.co.uk/cookies.html">cookies</a> |
+	<a href="https://waternumbers.co.uk/disclaimer.html">disclaimer</a> |
+	Registered in England. Company No 11200994. Registered Office: 90
+	Ullswater Road, Lancaster, LA1 3PS, UK.</p>
+    </footer>
+    <!-- javascript -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    	    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    	    crossorigin=""></script>
+    <script src="./js/ukg.js"></script>
+  </body>
+</html>

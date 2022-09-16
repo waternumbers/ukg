@@ -174,14 +174,15 @@ sudo certbot renew --dry-run
 Edit routing file above to include
 
 ```
-location /series {
-proxy_pass http://localhost:5678/series;
-proxy_http_version 1.1;
-proxy_set_header Upgrade $http_upgrade;
-proxy_set_header Connection 'upgrade';
-proxy_set_header Host $host;
-proxy_cache_bypass $http_upgrade;
-        }
+location /gauge/ {
+  limit_except GET {deny  all;}
+  proxy_pass http://localhost:5678/;
+  proxy_http_version 1.1;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection 'upgrade';
+  proxy_set_header Host $host;
+  proxy_cache_bypass $http_upgrade;
+}
 ```
 
 after `loacation /`
